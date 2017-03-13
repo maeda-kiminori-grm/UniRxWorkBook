@@ -23,7 +23,7 @@ namespace UniRxWorkBook.Operators
 
             this.UpdateAsObservable()
                 .SkipUntil(onStream)
-                ._____()
+				.TakeUntil(offStream)
                 .RepeatUntilDestroy(gameObject)
                 .Subscribe(_ => RotateCube());
 
