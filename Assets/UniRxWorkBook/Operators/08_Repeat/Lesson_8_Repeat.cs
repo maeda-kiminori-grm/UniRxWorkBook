@@ -25,8 +25,8 @@ namespace UniRxWorkBook.Operators
             // 適切なオペレータをFirstの後ろに入れよう
             leftStream
                 .Zip(rightStream, (l, r) => Unit.Default)
-                .First()
-                ._____()
+				.First()
+				.RepeatUntilDestroy(gameObject)
                 .SubscribeToText(resultLabel, _ => resultLabel.text += "OK\n");
         }
     }
