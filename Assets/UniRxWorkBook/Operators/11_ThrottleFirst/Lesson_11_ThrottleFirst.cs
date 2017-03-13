@@ -18,7 +18,7 @@ namespace UniRxWorkBook.Operators
             // そこで、____を書き換えて「左クリックをしている間100msに１回ずつ弾を発射する」という動作にしよう
             this.UpdateAsObservable()
                 .Where(_ => Input.GetMouseButton(0))
-                ._____()
+				.ThrottleFirst(TimeSpan.FromMilliseconds(100))
                 .Subscribe(_ =>
                 {
                     var b = Instantiate(bulletObject, transform.position, Quaternion.identity) as GameObject;
